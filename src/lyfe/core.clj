@@ -19,10 +19,6 @@
   (<= 2 (count (neighbors point life)) 3))
 
 
-(defn ideal [point life]
-  (= 3 (count (neighbors point life))))
-
-
 (defn keep [life]
   (set (filter #(happy % life) life)))
 
