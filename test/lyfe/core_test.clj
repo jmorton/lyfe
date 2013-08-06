@@ -7,10 +7,6 @@
     (is (= points #{ [-1  1 ]  [ 0  1 ]  [ 1  1 ]
                      [-1  0 ]            [ 1  0 ]
                      [-1 -1 ]  [ 0 -1 ]  [ 1 -1 ] }))))
-(deftest test-seed
-  (let [world (seed [1,1] { :living #{[0,0] [2,2] [0,2] [2,0]} :barren #{} })]
-    (is (= (world :living) #{[0,0] [1,1] [2,2] [0,2] [2,0] } ))
-    (is (= (world :barren) #{[0,1] [1,0] [1,2] [2,1] } ))))
 
 (deftest test-neighbors
   (let [points #{ [1,0] [1,1] [1,2] } ]

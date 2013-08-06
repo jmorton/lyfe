@@ -11,13 +11,6 @@
     (s/difference ps #{point})))
 
 
-(defn seed [ point { living :living, barren :barren } ]
-  (let [nearby (set (surrounding point))
-        really-dead (s/difference nearby living)]
-    { :living (conj living point)
-      :barren (into barren really-dead) }))
-
-
 (defn neighbors [point points]
   (s/intersection (surrounding point) points))
 
