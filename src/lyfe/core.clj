@@ -11,27 +11,27 @@
     (s/difference ps #{point})))
 
 
-(defn neighbors [point points]
-  (s/intersection (surrounding point) points))
+(defn neighbors [point life]
+  (s/intersection (surrounding point) life))
 
 
-(defn happy [point points]
-  (<= 2 (count (neighbors point points)) 3))
+(defn happy [point life]
+  (<= 2 (count (neighbors point life)) 3))
 
 
-(defn ideal [point points]
-  (= 3 (count (neighbors point points))))
+(defn ideal [point life]
+  (= 3 (count (neighbors point life))))
 
 
-(defn reap [points]
-  (set (filter #(happy % points) points)))
+(defn keep [life]
+  (set (filter #(happy % life) life)))
 
 
-(defn sow [points]
-  (let [neighborhood (frequencies (reduce into (map seq (map surrounding points))))
+(defn seed [life]
+  (let [neighborhood (frequencies (reduce into (map seq (map surrounding life))))
         three-nearby (map key (filter #(= 3 (val %)) neighborhood))]
     (set three-nearby)))
 
 
-(defn step [points]
-  (into (sow points) (reap points)))
+(defn step [life]
+  (into (seed life) (keep life)))

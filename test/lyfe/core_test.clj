@@ -18,16 +18,15 @@
     (is (= (count (neighbors [1,1] points)) 2))
     (is (= (happy [1,1] points) true))))
 
-(deftest test-reap
+(deftest test-keep
   (let [stable #{ [0,0] [1,1] [0,1] [1,0] }
         doomed #{ [0,0] [1,1] } ]
-    (is (= (reap stable) stable))
-    (is (= (reap doomed) #{}))))
+    (is (= (keep stable) stable))
+    (is (= (keep doomed) #{}))))
 
-(deftest test-sow
+(deftest test-seed
   (let [points #{[0,0] [1,1] [0,2]}]
-    (is (= (sow points) #{[0,1]}))))
-  
+    (is (= (seed points) #{[0,1]}))))
 
 (deftest test-step
   (let [points #{[0,0] [1,1] [2,0] [2,1] [20,20]}]
