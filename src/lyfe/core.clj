@@ -31,3 +31,7 @@
   (let [neighborhood (frequencies (reduce into (map seq (map surrounding points))))
         three-nearby (map key (filter #(= 3 (val %)) neighborhood))]
     (set three-nearby)))
+
+
+(defn step [points]
+  (into (sow points) (reap points)))

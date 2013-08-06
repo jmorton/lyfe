@@ -28,3 +28,8 @@
   (let [points #{[0,0] [1,1] [0,2]}]
     (is (= (sow points) #{[0,1]}))))
   
+
+(deftest test-step
+  (let [points #{[0,0] [1,1] [2,0] [2,1] [20,20]}]
+    (is (= (step points) #{[1,1] [2,1] [2,0]}))
+    (is (= (step (step points)) #{[1,0] [1,1] [2,0] [2,1]}))))
