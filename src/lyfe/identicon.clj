@@ -12,10 +12,13 @@
 (defn filled [color]
   (not= color -986896))
 
-(defn color [img point]
-  (.getRGB img (point 0) (point 1)))
+(defn color [img [x y]]
+  (.getRGB img (point x) (point y)))
+
+(defn pinpoint [[x y]]
+  [ (/ x 70) (/ y 70)])
 
 (defn seed [img]
   (let [steps  (range 0 350 70)
         points (for [x steps y steps] (vector x y))]
-    (filter #(filled (color img %)) points)))
+    (map pinpoint (filter #(filled (color img %)) points))))
