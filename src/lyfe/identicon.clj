@@ -19,6 +19,6 @@
   [ (/ x 70) (/ y 70)])
 
 (defn seed [img]
-  (let [steps  (range 0 350 70)
+  (let [steps  (range 0 351 70)
         points (for [x steps y steps] (vector x y))]
     (map pinpoint (filter #(filled (color img %)) points))))
